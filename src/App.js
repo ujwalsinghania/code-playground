@@ -1,9 +1,10 @@
 import React,{Component} from 'react';
 import './App.css';
+import Card from "react-bootstrap/Card";
 
 function App() {
   return (
-    <div className="App">
+    <div>
         <Frame />
     </div>
   );
@@ -11,7 +12,7 @@ function App() {
 
 class Frame extends Component{
     state={
-            html: '',
+            html: '<h3>A simple code playground in react</h3>',
             css: '',
             js: '',
             temp: ''
@@ -42,21 +43,40 @@ class Frame extends Component{
         const source = 'data:text/html,' + encodeURIComponent(html);
 
     return(
-        <div className={"container-fluid h-100"}>
+        <div className={"container-fluid"}>
             <div className={"row"}>
-                <div className={"col-lg-5"}>
+                <div className={"col-lg-7 p-0"}>
                     <iframe src={source} />
                 </div>
-                <div className={"col-lg-7"}>
+                <div className={"col-lg-5"} style={{width: '95%', background: 'gray'}}>
                     <div className={"row"}>
-                        <div className={"col-lg-12"}>
-                            <textarea onChange={this.handleChange} value={this.state.html} name={"html"}/>
+                        <div className={"col-lg-12 mb-1"}>
+                            <Card className={"bg-dark"}>
+                                <Card.Header>HTML</Card.Header>
+                                <Card.Body>
+                                    <textarea onChange={this.handleChange} value={this.state.html} name={"html"}/>
+                                </Card.Body>
+                            </Card>
                         </div>
-                        <div className={"col-lg-12"}>
-                            <textarea onChange={this.handleChange} value={this.state.css} name={"css"} />
+                    </div>
+                    <div className={"row"}>
+                        <div className={"col-lg-12 mb-1"}>
+                            <Card className={"bg-dark"}>
+                                <Card.Header>CSS</Card.Header>
+                                <Card.Body>
+                                    <textarea onChange={this.handleChange} value={this.state.css} name={"css"} />
+                                </Card.Body>
+                            </Card>
                         </div>
-                        <div className={"col-lg-12"}>
-                            <textarea onChange={this.handleChange} value={this.state.temp} name={"temp"} />
+                    </div>
+                    <div className={"row"}>
+                        <div className={"col-lg-12 mb-1"}>
+                            <Card className={"bg-dark"}>
+                                <Card.Header>JS</Card.Header>
+                                <Card.Body>
+                                    <textarea onChange={this.handleChange} value={this.state.temp} name={"temp"} />
+                                </Card.Body>
+                            </Card>
                         </div>
                     </div>
                 </div>
